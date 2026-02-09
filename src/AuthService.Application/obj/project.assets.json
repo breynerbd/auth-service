@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net8.0": {}
+    "net8.0": {
+      "AuthService.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/AuthService.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/AuthService.Domain.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "AuthService.Domain/1.0.0": {
+      "type": "project",
+      "path": "../AuthService.Domain/AuthService.Domain.csproj",
+      "msbuildProject": "../AuthService.Domain/AuthService.Domain.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net8.0": []
+    "net8.0": [
+      "AuthService.Domain >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Informatica\\.nuget\\packages\\": {}
@@ -13,11 +32,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\KinalSport\\authentication-service\\src\\AuthService.Application\\AuthService.Application.csproj",
+      "projectUniqueName": "C:\\KinalSport\\auth-service\\src\\AuthService.Application\\AuthService.Application.csproj",
       "projectName": "AuthService.Application",
-      "projectPath": "C:\\KinalSport\\authentication-service\\src\\AuthService.Application\\AuthService.Application.csproj",
+      "projectPath": "C:\\KinalSport\\auth-service\\src\\AuthService.Application\\AuthService.Application.csproj",
       "packagesPath": "C:\\Users\\Informatica\\.nuget\\packages\\",
-      "outputPath": "C:\\KinalSport\\authentication-service\\src\\AuthService.Application\\obj\\",
+      "outputPath": "C:\\KinalSport\\auth-service\\src\\AuthService.Application\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Informatica\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -31,7 +50,11 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\KinalSport\\auth-service\\src\\AuthService.Domain\\AuthService.Domain.csproj": {
+              "projectPath": "C:\\KinalSport\\auth-service\\src\\AuthService.Domain\\AuthService.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
