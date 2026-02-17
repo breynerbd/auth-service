@@ -12,6 +12,11 @@ public class UserRole {
     [Required]
     [MaxLength(16)]
     [ForeignKey(nameof(Role))]
+    public string RoleId {get; set; } = string.Empty;
+
+    [Required]
+    [MaxLength(16)]
+    [ForeignKey(nameof(User))]
     public string UserId {get; set; } = string.Empty;
 
     [Required]
