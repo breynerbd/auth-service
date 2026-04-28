@@ -1,7 +1,7 @@
 using System.Security.Cryptography;
 namespace AuthService.Application.Services;
 
-public static class TokenGenerator 
+public static class TokenGenerator
 {
     public static string GenerateEmailVerificationToken()
     {
