@@ -18,7 +18,7 @@ public class CloudinaryService(IConfiguration configuration) : ICloudinaryServic
         {
             using var stream = new MemoryStream(imageFile.Data);
 
-            var folder = configuration["CloudinarySettings:Folder"] ?? "auth_service/profiles";
+            var folder = configuration["CloudinarySettings:Folder"] ?? "kinalSport/profiles";
             var uploadParams = new ImageUploadParams
             {
                 File = new FileDescription(imageFile.FileName, stream),
@@ -77,8 +77,8 @@ public class CloudinaryService(IConfiguration configuration) : ICloudinaryServic
 
         public string GetFullImageUrl(string imagePath)
     {
-        var baseUrl = configuration["CloudinarySettings:BaseUrl"] ?? "https://res.cloudinary.com/dug3apxt3/image/upload/";
-        var folder = configuration["CloudinarySettings:Folder"] ?? "auth_service/profiles";
+        var baseUrl = configuration["CloudinarySettings:BaseUrl"] ?? "https://res.cloudinary.com/die1jjc0t/image/upload/";
+        var folder = configuration["CloudinarySettings:Folder"] ?? "kinalSport/profiles";
         var defaultPath = configuration["CloudinarySettings:DefaultAvatarPath"] ?? "default-avatar_ewzxwx.png";
 
         var pathToUse = string.IsNullOrWhiteSpace(imagePath) ? defaultPath : imagePath;
