@@ -2,23 +2,23 @@ using AuthService.Application.Interfaces;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
 using Microsoft.Extensions.Configuration;
-
 namespace AuthService.Application.Services;
+
 public class CloudinaryService(IConfiguration configuration) : ICloudinaryService
 {
-	    private readonly Cloudinary _cloudinary = new(new Account(
+    private readonly Cloudinary _cloudinary = new(new Account(
         configuration["CloudinarySettings:CloudName"],
         configuration["CloudinarySettings:ApiKey"],
         configuration["CloudinarySettings:ApiSecret"]
     ));
 
-        public async Task<string> UploadImageAsync(IFileData imageFile, string fileName)
+    public async Task<string> UploadImageAsync(IFileData imageFile, string fileName)
     {
         try
         {
             using var stream = new MemoryStream(imageFile.Data);
 
-            var folder = configuration["CloudinarySettings:Folder"] ?? "kinalSport/profiles";
+            var folder = configuration["CloudinarySettings:Folder"] ?? "kinalSports/profiles";
             var uploadParams = new ImageUploadParams
             {
                 File = new FileDescription(imageFile.FileName, stream),
@@ -49,7 +49,7 @@ public class CloudinaryService(IConfiguration configuration) : ICloudinaryServic
         }
     }
 
-        public async Task<bool> DeleteImageAsync(string publicId)
+    public async Task<bool> DeleteImageAsync(string publicId)
     {
         try
         {
@@ -67,19 +67,19 @@ public class CloudinaryService(IConfiguration configuration) : ICloudinaryServic
         }
     }
 
-        public string GetDefaultAvatarUrl()
+    public string GetDefaultAvatarUrl()
     {
 
-        var defaultPath = configuration["CloudinarySettings:DefaultAvatarPath"] ?? "default-avatar_ewzxwx.png";
+        var defaultPath = configuration["CloudinarySettings:DefaultAvatarPath"] ?? "default-avatar_ewzxwx_t54uu3";
         if (defaultPath.Contains('/')) return defaultPath.Split('/').Last();
         return defaultPath;
     }
 
-        public string GetFullImageUrl(string imagePath)
+    public string GetFullImageUrl(string imagePath)
     {
-        var baseUrl = configuration["CloudinarySettings:BaseUrl"] ?? "https://res.cloudinary.com/die1jjc0t/image/upload/";
-        var folder = configuration["CloudinarySettings:Folder"] ?? "kinalSport/profiles";
-        var defaultPath = configuration["CloudinarySettings:DefaultAvatarPath"] ?? "default-avatar_ewzxwx.png";
+        var baseUrl = configuration["CloudinarySettings:BaseUrl"] ?? "https://res.cloudinary.com/die1jjc0t/image/upload/v1777988664/";
+        var folder = configuration["CloudinarySettings:Folder"] ?? "kinalSports/profiles";
+        var defaultPath = configuration["CloudinarySettings:DefaultAvatarPath"] ?? "default-avatar_ewzxwx_t54uu3";
 
         var pathToUse = string.IsNullOrWhiteSpace(imagePath) ? defaultPath : imagePath;
         if (!pathToUse.Contains('/')) pathToUse = $"{folder}/{pathToUse}";
@@ -87,7 +87,7 @@ public class CloudinaryService(IConfiguration configuration) : ICloudinaryServic
         return $"{baseUrl}{pathToUse}";
     }
 
-        private static string SanitizeFileName(string fileName)
+    private static string SanitizeFileName(string fileName)
     {
         return fileName
             .Trim()
@@ -96,3 +96,15 @@ public class CloudinaryService(IConfiguration configuration) : ICloudinaryServic
             .ToLowerInvariant();
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
